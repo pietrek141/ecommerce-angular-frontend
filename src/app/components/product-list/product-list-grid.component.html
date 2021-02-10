@@ -1,0 +1,98 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+
+    <h4>Category: {{ currentCategoryName }}</h4>
+    <hr>
+    <div class="container-fluid">
+      <div class="row">
+        <div *ngFor="let temProduct of products" class="col-md-3">
+          <div class="product-box">
+
+            <a routerLink="/products/{{ temProduct.id }}">
+              <img src="{{temProduct.imageUrl}}" class="img-responsive">
+            </a>
+            <a routerLink="/products/{{ temProduct.id }}">
+              <h1>{{temProduct.name}}</h1>
+            </a>
+            <div class="price">{{temProduct.unitPrice | currency:'USD'}}</div>
+            <button (click)="addToCart(temProduct)" class="btn btn-primary btn-sm ">Add to cart</button>
+          </div>
+        </div>
+
+        <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+          No products found.
+        </div>
+      </div>
+
+
+      <!--begin footer-->
+      <div class="footer-pagination">
+        <div class="row">
+          <div class="col-md-6"></div>
+
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-9" style="padding-left: 30%">
+                <ngb-pagination [(page)]="thePageNumber"
+                                [pageSize]="thePageSize"
+                                [collectionSize]="theTotalElements"
+                                [maxSize]="5"
+                                [boundaryLinks]="true"
+                                (pageChange)="listProducts()">
+
+                </ngb-pagination>
+
+              </div>
+
+              <div class="col-md-3 mt-2" style="text-align: right;">
+                <span class="mr-2">Page Size</span>
+
+                <select (change)="updatePageSize($event.target.value)">
+                  <option selected="true">5</option>
+                  <option>10</option>
+                  <option>20</option>
+                  <option>50</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--end footer-->
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--
+
+
+
+<table class="table">
+
+  <thead class="table-dark">
+
+  <tr>
+    <th></th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Units in Stock</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let tempProduct of products">
+    <td class="align-middle">
+      <img src="{{tempProduct.imageUrl}}" height="50"/>
+    </td>
+    <td class="align-middle">{{tempProduct.name}}</td>
+    <td class="align-middle">{{tempProduct.unitPrice | currency:'USD'}}</td>
+    <td class="align-middle">{{tempProduct.unitsInStock}}</td>
+  </tr>
+  </tbody>
+
+</table>
+-->
