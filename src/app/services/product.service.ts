@@ -9,8 +9,8 @@ import {ProductCategory} from '../common/product-category';
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'http://localhost:8080/api/products';
-  private categoryUrl = 'http://localhost:8080/api/product-category';
+  private baseUrl = 'https://spring-boot-ecommerce-backend.herokuapp.com/api/products';
+  private categoryUrl = 'https://spring-boot-ecommerce-backend.herokuapp.com/api/product-category';
 
   constructor(private httpClient: HttpClient) {
   }

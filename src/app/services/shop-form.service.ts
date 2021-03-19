@@ -11,8 +11,8 @@ import {State} from '../common/state';
 })
 export class ShopFormService {
 
-  private countriesUrl = 'http://localhost:8080/api/countries';
-  private statesUrl = 'http://localhost:8080/api/states';
+  private countriesUrl = 'https://spring-boot-ecommerce-backend.herokuapp.com/api/countries';
+  private statesUrl = 'https://spring-boot-ecommerce-backend.herokuapp.com/api/states';
 
   constructor(private httpClient: HttpClient) {
   }
